@@ -1,4 +1,4 @@
-module gitee.com/zkdfbb/go-utils
+module github.com/zkdfbb/go-utils
 
 go 1.15
 
