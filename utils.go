@@ -41,6 +41,17 @@ func GetLocalIP() (string, error) {
 	return "", errors.New("Can not find the client ip address")
 }
 
+// RandomStr random str
+func RandomStr(len int) string {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	bytes := make([]byte, len)
+	for i := 0; i < len; i++ {
+		b := r.Intn(26) + 97
+		bytes[i] = byte(b)
+	}
+	return string(bytes)
+}
+
 // RandomIP ip address
 func RandomIP() string {
 	rand.Seed(time.Now().Unix())
@@ -57,10 +68,10 @@ func Md5(str string) string {
 // FileMd5 calc file md5
 func FileMd5(file string) string {
 	f, err := os.Open(file)
+	defer f.Close()
 	if err != nil {
 		return ""
 	}
-	defer f.Close()
 	h := md5.New()
 	io.Copy(h, f)
 	return hex.EncodeToString(h.Sum(nil))

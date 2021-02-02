@@ -13,6 +13,6 @@ func TestCPUID(t *testing.T) {
 	t.Logf("cpuid: %s", CPUID())
 }
 
-func TestGetLocalIP(t *testing.T) {
-	fmt.Println(GetLocalIP())
+func TestRandomStr(t *testing.T) {
+	fmt.Println(RandomStr(3))
 }
